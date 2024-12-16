@@ -2,25 +2,26 @@
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
+  runtimeConfig: {
+    public: {
+      apiBase: '/api',
+    },
+  },
+  nitro: {
+    devProxy: {
+      '/api': {
+        target: 'http://localhost:3001',
+        changeOrigin: true,
+        autoRewrite:true,
+      },
+    },
+  },
   modules: ['vuetify-nuxt-module'],
   vuetify :{
     moduleOptions:{
 
     },
     vuetifyOptions :{
-      theme: {
-        themes: {
-          light: {
-            primary: '#1976D2',
-            secondary: '#424242',
-            accent: '#82B1FF',
-            error: '#FF5252',
-            info: '#2196F3',
-            success: '#4CAF50',
-            warning: '#FFC107',
-          },
-        },
-      },
     }
   }
 })
