@@ -7,6 +7,9 @@ export default defineNuxtConfig({
       apiBase: '/api',
     },
   },
+  routeRules: {
+    '/product': { ssr: false },
+  },
   nitro: {
     devProxy: {
       '/api': {
@@ -16,12 +19,12 @@ export default defineNuxtConfig({
       },
     },
   },
-  modules: ['vuetify-nuxt-module'],
-  vuetify :{
-    moduleOptions:{
-
-    },
-    vuetifyOptions :{
-    }
-  }
+  modules: ['vuetify-nuxt-module','@pinia/nuxt','pinia-plugin-persistedstate/nuxt'],
+  typescript: {
+    strict: true,
+  },
+  piniaPluginPersistedstate: {
+    storage: 'localStorage',
+  },
+  
 })
